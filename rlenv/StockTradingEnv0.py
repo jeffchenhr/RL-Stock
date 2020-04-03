@@ -14,7 +14,8 @@ MAX_OPEN_POSITIONS = 5
 MAX_STEPS = 20000
 MAX_DAY_CHANGE = 1
 
-INITIAL_ACCOUNT_BALANCE = 10000
+INITIAL_ACCOUNT_BALANCE = 300000
+TRANSACTION_COST=100
 
 
 class StockTradingEnv(gym.Env):
@@ -72,7 +73,7 @@ class StockTradingEnv(gym.Env):
             total_possible = int(self.balance / current_price)
             shares_bought = int(total_possible * amount)
             prev_cost = self.cost_basis * self.shares_held
-            additional_cost = shares_bought * current_price
+            additional_cost = shares_bought * current_price+TRANSACTION_COST
 
             self.balance -= additional_cost
             self.cost_basis = (
