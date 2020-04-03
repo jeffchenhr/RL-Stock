@@ -73,7 +73,7 @@ class StockTradingEnv(gym.Env):
             total_possible = int(self.balance / current_price)
             shares_bought = int(total_possible * amount)
             prev_cost = self.cost_basis * self.shares_held
-            additional_cost = shares_bought * current_price+TRANSACTION_COST
+            additional_cost = shares_bought * current_price
 
             self.balance -= additional_cost
             self.cost_basis = (
